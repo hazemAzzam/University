@@ -3,11 +3,13 @@ from django.db import models
 
 # Create your models here.
 class Person(models.Model):
-    name = models.OneToOneField("Name", on_delete=models.CASCADE)
+    fname = models.CharField(max_length=50, null=False, blank=False)
+    minit = models.CharField(max_length=50, null=True, blank=True)
+    lname = models.CharField(max_length=50, null=True, blank=True)
     
     @property
-    def full_name(self):
-        return f"{self.name.fname} {self.name.minit} {self.name.lname}"
+    def name(self):
+        return f"{self.fname} {self.minit} {self.lname}"
     
     ssn = models.CharField(max_length=15, primary_key=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -19,16 +21,8 @@ class Person(models.Model):
     address= models.OneToOneField("Address", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.full_name}"
+        return f"{self.name}"
 
-
-class Name(models.Model):
-    fname = models.CharField(max_length=50, null=False, blank=False)
-    minit = models.CharField(max_length=50, null=True, blank=True)
-    lname = models.CharField(max_length=50, null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.fname} {self.minit} {self.lname}"
 
 class Address(models.Model):
     no = models.CharField(max_length=50, null=True, blank=True)

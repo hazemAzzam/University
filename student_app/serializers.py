@@ -25,36 +25,39 @@ class Degree_Serializer(ComplexSerializer):
         fields="__all__"
 
 class Grade_Student_Serializer(ComplexSerializer):
+    student_name = StringRelatedField(source="student")
     student = PrimaryKeyRelatedField(
         queryset=Student.objects.filter(
                 Q(level=4, grade_student=None)
                 |
                 Q(level=5)
             ),
-        )
+            write_only=True
+    )
     grade = Degree_Serializer(required=True)
     level = IntegerField()
-    advisor = PrimaryKeyRelatedField(
-        queryset=Faculty.objects.all()
-    )
+    advisor_name = StringRelatedField(source="advisor")
+    advisor = PrimaryKeyRelatedField(queryset=Faculty.objects.all(), write_only=True)
+    committee_names = StringRelatedField(source="committee", many=True, read_only=True)
     committee = PrimaryKeyRelatedField(
         queryset=Faculty.objects.all(),
-        many=True
+        many=True,
+        write_only=True
     )
     class Meta:
         model=Grade_Student
-        fields=["student", "level", "grade", "advisor", "committee"]
+        fields=["student_name", "student", "level", "grade", "advisor_name", "advisor", "committee_names", "committee"]
     def create(self, validated_data):
-        try:
-            student = Student.objects.get(ssn=validated_data['student'].ssn)
-            student_level = student.level
-            new_level = validated_data.pop('level', 0)
-            if new_level - student_level != 1:
-                raise ValidationError("You can only level a student up 1 level")
-            student.level = new_level
-            student.save()
-        except:
-            raise ValidationError("Error saving grade student")
+        #try:
+        student = Student.objects.get(ssn=validated_data['student'].ssn)
+        student_level = student.level
+        new_level = validated_data.pop('level', 0)
+        if new_level - student_level != 1:
+            raise ValidationError("You can only level a student up 1 level")
+        student.level = new_level
+        student.save()
+        #except:
+        #    raise ValidationError("Error saving grade student")
 
         return super().create(validated_data)
     
