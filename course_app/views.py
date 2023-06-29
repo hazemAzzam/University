@@ -11,3 +11,7 @@ class Section_View(ModelViewSet):
 class Current_Section_View(ModelViewSet):
     queryset=Section.objects.filter(year=datetime.now().year, qtr=get_current_quarter())
     serializer_class=Section_Serializer
+
+class Course_View(ModelViewSet):
+    queryset=Course.objects.all()
+    serializer_class=Course_Serializer

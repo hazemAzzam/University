@@ -20,6 +20,8 @@ router.register('current-sections', Current_Section_View, basename='current-sect
 router.register('grants', Grant_View)
 router.register('supports', Support_View)
 
+router.register('courses', Course_View)
+
 urlpatterns = [
     path('', include(router.urls))
 ]
