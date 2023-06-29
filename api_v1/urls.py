@@ -4,6 +4,7 @@ from person_app.views import *
 from student_app.views import *
 from faculty_app.views import *
 from course_app.views import *
+from college_app.views import *
 router = DefaultRouter()
 
 router.register('students', Student_View)
@@ -21,6 +22,9 @@ router.register('grants', Grant_View)
 router.register('supports', Support_View)
 
 router.register('courses', Course_View)
+
+router.register('colleges', College_View)
+router.register('departments', Department_View)
 
 urlpatterns = [
     path('', include(router.urls))

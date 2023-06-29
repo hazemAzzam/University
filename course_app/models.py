@@ -5,8 +5,10 @@ class Course(models.Model):
     course_number = models.CharField(max_length=6, primary_key=True)
     course_name = models.CharField(max_length=50)
     course_desc = models.TextField()
+    department = models.ForeignKey("college_app.Department", on_delete=models.CASCADE, related_name="courses")
 
-
+    def __str__(self):
+        return f"{self.course_name}"
 
 class Section(models.Model):
     number = models.CharField(max_length=5, primary_key=True)

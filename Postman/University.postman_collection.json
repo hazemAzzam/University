@@ -51,7 +51,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"level\": \"{{randomNumber}}\"\r\n}",
+							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"level\": \"{{randomNumber}}\",\r\n    \"minor\": null,\r\n    \"major\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,7 +111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"rank\": \"{{randomNumber}}\",\r\n    \"f_office\": \"{{$randomInt}}\",\r\n    \"f_phone\": \"{{$randomPhoneNumber}}\",\r\n    \"salary\": \"{{randomSalary}}\"\r\n}",
+							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"rank\": \"{{randomNumber}}\",\r\n    \"f_office\": \"{{$randomInt}}\",\r\n    \"f_phone\": \"{{$randomPhoneNumber}}\",\r\n    \"salary\": \"{{randomSalary}}\",\r\n    \"departments\": [\"Computers\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -282,6 +282,66 @@
 			]
 		},
 		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "list courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/courses/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"courses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"course_number\": \"{{$randomInt}}\",\r\n    \"course_name\": \"{{$randomVerb}}\",\r\n    \"course_desc\": \"{{$randomLoremSentence}}\",\r\n    \"department\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/courses/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"courses",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Sections",
 			"item": [
 				{
@@ -314,7 +374,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"number\": \"{{$randomInt}}\",\r\n    \"year\": \"{{$randomInt}}\",\r\n    \"qtr\": \"{{randomQtr}}\",\r\n    \"instructor_researcher\": null\r\n}",
+							"raw": "{\r\n    \"number\": \"{{$randomInt}}\",\r\n    \"year\": \"{{$randomInt}}\",\r\n    \"qtr\": \"{{randomQtr}}\",\r\n    \"course\": \"814\",\r\n    \"instructor_researcher\": \"574628849\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -488,6 +548,159 @@
 									"key": "grant",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "list departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/departments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"departments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create department",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomDepartment}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"office\": \"{{$randomInt}}\",\r\n    \"college\": \"ocie.info\",\r\n    \"chairs\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/departments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"departments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update department",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chairs\": \"394347724\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/departments/Computers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"departments",
+								"Computers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "College",
+			"item": [
+				{
+					"name": "list colleges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/colleges/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"colleges",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create college",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"college_name\": \"{{$randomDomainName}}\",\r\n    \"dean\": \"{{$randomFullName}}\",\r\n    \"college_office\": \"{{$randomInt}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/colleges/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"colleges",
+								""
 							]
 						}
 					},

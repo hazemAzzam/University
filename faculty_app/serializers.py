@@ -5,7 +5,7 @@ from student_app.serializers import Student_Serializer
 
 
 class Faculty_Serializer(Person_Serializer):
-    
+    chairs = StringRelatedField(read_only=True)
     class Meta:
         model=Faculty
         fields="__all__"

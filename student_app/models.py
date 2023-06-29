@@ -7,6 +7,8 @@ from django.contrib.contenttypes.models import ContentType
 
 class Student(Person):
     level = models.IntegerField()
+    minor = models.ForeignKey("college_app.Department", on_delete=models.SET_NULL, null=True, related_name="minor_students", blank=True)
+    major = models.ForeignKey("college_app.Department", on_delete=models.SET_NULL, null=True, related_name="major_students", blank=True)
     
 class Register(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='current_sections')

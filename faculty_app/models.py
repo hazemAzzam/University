@@ -12,6 +12,7 @@ class Faculty(Person):
     f_office = models.IntegerField()
     f_phone = models.CharField(max_length=15)
     salary = models.PositiveIntegerField()
+    departments = models.ManyToManyField("college_app.Department", related_name="facul")
 
 @receiver(post_save, sender=Faculty)
 def insert_faculty_as_instructor(sender, instance, **kwargs):
