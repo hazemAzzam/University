@@ -8,7 +8,7 @@ router = DefaultRouter()
 
 router.register('students', Student_View)
 router.register('faculities', Faculty_View)
-router.register('grade_students', Grade_Student_View)
+router.register('grade_students', Grad_Student_View)
 router.register('instructor-researchers', Instructor_Researcher_View)
 router.register('transcript', Transcript_View)
 
@@ -16,6 +16,9 @@ router.register('request-open-course', Register_View)
 
 router.register('sections', Section_View, basename='sections')
 router.register('current-sections', Current_Section_View, basename='current-sections')
+
+router.register('grants', Grant_View)
+router.register('supports', Support_View)
 
 urlpatterns = [
     path('', include(router.urls))
