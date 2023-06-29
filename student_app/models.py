@@ -17,13 +17,16 @@ class Register(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='current_sections')
     section = models.ForeignKey("course_app.Section", on_delete=models.SET_NULL, null=True)
 
-class Grade_Student(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="grade_student", unique=True)
+class Grad_Student(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="grade_student", unique=True, primary_key=True)
     
+    collage = models.CharField(max_length=50)
+    degree = models.FloatField()
+    year = models.IntegerField()
+
     @property
     def level(self):
         return f"{self.student.level}"
-    grade = models.OneToOneField("Degree", on_delete=models.CASCADE)
     advisor = models.ForeignKey("faculty_app.Faculty", related_name="advisor_of", on_delete=models.SET_NULL, null=True)
     committee = models.ManyToManyField("faculty_app.Faculty", related_name="committee")
 
@@ -31,10 +34,6 @@ class Grade_Student(models.Model):
         return f"{self.student}"
 
     
-class Degree(models.Model):
-    collage = models.CharField(max_length=50)
-    degree = models.FloatField()
-    year = models.IntegerField()
 
 
 

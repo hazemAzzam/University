@@ -1,4 +1,4 @@
-from rest_framework.customs import ComplexSerializer, PrimaryKeyRelatedField, CharField, IntegerField, StringRelatedField, SlugRelatedField
+from rest_framework.customs import ComplexSerializer, PrimaryKeyRelatedField, CharField, IntegerField, StringRelatedField, FloatField
 from .models import *
 from person_app.serializers import Person_Serializer
 from datetime import datetime
@@ -14,51 +14,74 @@ class Student_Serializer(Person_Serializer):
         fields="__all__"
 
 
-class Degree_Serializer(ComplexSerializer):
-    class Meta:
-        model=Degree
-        fields='__all__'
 
-class Degree_Serializer(ComplexSerializer):
-    class Meta:
-        model=Degree
-        fields="__all__"
+class Grad_Student_Serializer(ComplexSerializer):
+    student_name = StringRelatedField(source="student.name", read_only=True)
+    student_level = IntegerField(source="student.level", read_only=True)
+    advisor_name = StringRelatedField(source="advisor.name", read_only=True)
+    committee_name = StringRelatedField(source='committee', many=True, read_only=True)
 
-class Grade_Student_Serializer(ComplexSerializer):
-    student_name = StringRelatedField(source="student")
     student = PrimaryKeyRelatedField(
         queryset=Student.objects.filter(
                 Q(level=4, grade_student=None)
                 |
                 Q(level=5)
             ),
-            write_only=True
+        required=False
     )
-    grade = Degree_Serializer(required=True)
-    level = IntegerField()
-    advisor_name = StringRelatedField(source="advisor")
-    advisor = PrimaryKeyRelatedField(queryset=Faculty.objects.all(), write_only=True)
-    committee_names = StringRelatedField(source="committee", many=True, read_only=True)
-    committee = PrimaryKeyRelatedField(
-        queryset=Faculty.objects.all(),
-        many=True,
-        write_only=True
-    )
+
+    advisor = PrimaryKeyRelatedField(queryset=Faculty.objects.all(), write_only=True, required=False)
+    committee = PrimaryKeyRelatedField(queryset=Faculty.objects.all(), write_only=True, many=True, required=False)
+
+    collage = CharField(required=False)
+    degree = FloatField(required=False)
+    year = IntegerField(required=False)
     class Meta:
-        model=Grade_Student
-        fields=["student_name", "student", "level", "grade", "advisor_name", "advisor", "committee_names", "committee"]
-    def create(self, validated_data):
+        model=Grad_Student
+        fields="__all__"
+
+    def create(self, validated_data): 
+        grad_student = super().create(validated_data)
+        grad_student.student.level = 5
+        grad_student.student.save()
+        return grad_student
+    
+    
+    
+#class Grade_Student_Serializer(ModelSerializer):
+#    student_name = StringRelatedField(source="student")
+#    student = PrimaryKeyRelatedField(
+#        queryset=Student.objects.filter(
+#                Q(level=4, grade_student=None)
+#                |
+#                Q(level=5)
+#            ),
+#            write_only=True
+#    )
+#    grade = Degree_Serializer(required=True)
+#    level = IntegerField(source="student.level")
+#    advisor_name = StringRelatedField(source="advisor")
+#    advisor = PrimaryKeyRelatedField(queryset=Faculty.objects.all(), write_only=True)
+#    committee_names = StringRelatedField(source="committee", many=True, read_only=True)
+#    committee = PrimaryKeyRelatedField(
+#        queryset=Faculty.objects.all(),
+#        many=True,
+#        write_only=True
+#    )
+#    class Meta:
+#        model=Grad_Student
+#        fields=["student_name", "student", "level", "grade", "advisor_name", "advisor", "committee_names", "committee"]
+#        
+#    def create(self, validated_data):
+#        grad_student= super().create(validated_data)
+#
+#        #student = Student_Serializer(instance=grad_student.student)
+#        #student.update(level=validated_data['level'])
+#
+#        return grad_student
+
+
         
-        student = Student.objects.get(ssn=validated_data['student'].ssn)
-        student_level = student.level
-        new_level = validated_data.pop('level', 0)
-        if new_level - student_level != 1:
-            raise ValidationError("You can only level a student up 1 level")
-        student.level = new_level
-        student.save()
-
-
-        return super().create(validated_data)
     
 
 class Register_Serializer(ComplexSerializer):
