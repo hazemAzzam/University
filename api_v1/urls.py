@@ -16,7 +16,7 @@ router.register('transcript', Transcript_View)
 router.register('request-open-course', Register_View)
 
 router.register('sections', Section_View, basename='sections')
-router.register('current-sections', Current_Section_View, basename='current-sections')
+router.register('course-registerations', Register_View, basename='register')
 
 router.register('grants', Grant_View)
 router.register('supports', Support_View)
