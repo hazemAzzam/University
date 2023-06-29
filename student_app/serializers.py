@@ -13,6 +13,16 @@ class Student_Serializer(Person_Serializer):
         model=Student
         fields="__all__"
 
+    def create(self, validated_data):
+        if validated_data['level'] > 4:
+            raise ValidationError("Please add student level 5 from grad student section")
+        return super().create(validated_data)
+    
+    def update(self, instance, validated_data):
+        if validated_data['level'] > 4:
+            raise ValidationError("Please add student level 5 from grad student section")
+        return super().update(instance, validated_data)
+
 
 
 class Grad_Student_Serializer(ComplexSerializer):

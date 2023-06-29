@@ -4,11 +4,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.exceptions import ValidationError
 from django.contrib.contenttypes.models import ContentType
-# Create your models here.
-def assign_level_five(value):
-    if value >= 5:
-        raise ValidationError("Canot assign grade students directly")
-    
 
 class Student(Person):
     level = models.IntegerField()
