@@ -3,7 +3,7 @@ from person_app.models import Person
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.exceptions import ValidationError
-
+from django.contrib.contenttypes.models import ContentType
 # Create your models here.
 def assign_level_five(value):
     if value >= 5:
@@ -26,6 +26,9 @@ class Grade_Student(models.Model):
     grade = models.OneToOneField("Degree", on_delete=models.CASCADE)
     advisor = models.ForeignKey("faculty_app.Faculty", related_name="advisor_of", on_delete=models.SET_NULL, null=True)
     committee = models.ManyToManyField("faculty_app.Faculty", related_name="committee")
+
+    def __str__(self):
+        return f"{self.student}"
 
     
 class Degree(models.Model):

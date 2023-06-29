@@ -48,7 +48,7 @@ class Grade_Student_Serializer(ComplexSerializer):
         model=Grade_Student
         fields=["student_name", "student", "level", "grade", "advisor_name", "advisor", "committee_names", "committee"]
     def create(self, validated_data):
-        #try:
+        
         student = Student.objects.get(ssn=validated_data['student'].ssn)
         student_level = student.level
         new_level = validated_data.pop('level', 0)
@@ -56,8 +56,7 @@ class Grade_Student_Serializer(ComplexSerializer):
             raise ValidationError("You can only level a student up 1 level")
         student.level = new_level
         student.save()
-        #except:
-        #    raise ValidationError("Error saving grade student")
+
 
         return super().create(validated_data)
     
