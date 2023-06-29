@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "15156f4d-1b0c-403a-9fbc-0a90cf379bce",
+		"name": "University",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26275557",
+		"_collection_link": "https://www.postman.com/lively-trinity-888959/workspace/medical-convoy/collection/26275557-15156f4d-1b0c-403a-9fbc-0a90cf379bce?action=share&creator=26275557&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "list students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create student",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"level\": \"{{randomNumber}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"students",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Faculty",
+			"item": [
+				{
+					"name": "list faculities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/faculities/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"faculities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create faculity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"rank\": \"{{randomNumber}}\",\r\n    \"f_office\": \"{{$randomInt}}\",\r\n    \"f_phone\": \"{{$randomPhoneNumber}}\",\r\n    \"salary\": \"{{randomSalary}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/faculities/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"faculities",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grade Student",
+			"item": [
+				{
+					"name": "list grade students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/grade_students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grade_students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "make student grade",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student\": \"740823553\",\r\n    \"level\": \"5\",\r\n    \"grade\": {\r\n        \"collage\": \"Science\",\r\n        \"degree\": 4.5,\r\n        \"year\": 2023\r\n    },\r\n    \"advisor\": \"713727294\",\r\n    \"committee\": [\"713727294\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/grade_students/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grade_students",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sections",
+			"item": [
+				{
+					"name": "list sections",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/sections/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"sections",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create section",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\": \"{{$randomInt}}\",\r\n    \"year\": \"{{$randomInt}}\",\r\n    \"qtr\": \"{{randomQtr}}\",\r\n    \"instructor_researcher\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/sections/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"sections",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instructor Research",
+			"item": [
+				{
+					"name": "list instructor researchers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/instructor-researchers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"instructor-researchers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// GENERATE RANDOM SSN  Number",
+					"ssn_random = Math.floor(Math.random()*8+1)+Math.random().toString().slice(2,10);",
+					"pm.environment.set(\"randomSSN\", pm.variables.replaceIn(ssn_random));",
+					"",
+					"const states = [\"New York\", \"California\", \"Texas\", \"Florida\", \"Washington\"];",
+					"const randomState = states[Math.floor(Math.random() * states.length)];",
+					"",
+					"pm.environment.set(\"randomState\", randomState);",
+					"",
+					"function generateRandomZipCode() {",
+					"    const min = 10000; // Minimum ZIP code value",
+					"    const max = 99999; // Maximum ZIP code value",
+					"    const randomZipCode = Math.floor(Math.random() * (max - min + 1)) + min;",
+					"    return randomZipCode.toString().padStart(5, '0'); // Pad with leading zeros if necessary",
+					"}",
+					"",
+					"const randomZip = generateRandomZipCode();",
+					"pm.environment.set(\"randomZipCode\", randomZip);",
+					"",
+					"const genders = [\"Male\", \"Female\"];",
+					"const randomGender = genders[Math.floor(Math.random() * genders.length)];",
+					"pm.environment.set(\"randomGender\", randomGender);",
+					"",
+					"function generateRandomDate() {",
+					"    const start = new Date(1970, 0, 1); // Start date (e.g., January 1, 1970)",
+					"    const end = new Date(); // Current date (or any other desired end date)",
+					"    const randomTimestamp = start.getTime() + Math.random() * (end.getTime() - start.getTime());",
+					"    const randomDate = new Date(randomTimestamp);",
+					"    const year = randomDate.getFullYear();",
+					"    const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Month is zero-based, so we add 1 and pad with leading zero if necessary",
+					"    const day = String(randomDate.getDate()).padStart(2, '0'); // Pad with leading zero if necessary",
+					"",
+					"    return `${year}-${month}-${day}`;",
+					"}",
+					"",
+					"const randomDate = generateRandomDate();",
+					"pm.environment.set(\"randomDate\", randomDate);",
+					"",
+					"",
+					"const randomNum = Math.floor(Math.random() * 4) + 1;",
+					"pm.environment.set(\"randomNumber\", randomNum.toString());",
+					"",
+					"",
+					"function generateRandomSalary() {",
+					"    const minSalary = 1000; // Minimum salary value",
+					"    const maxSalary = 10000; // Maximum salary value",
+					"    const randomSalary = Math.floor(Math.random() * (maxSalary - minSalary + 1)) + minSalary;",
+					"    return randomSalary;",
+					"}",
+					"",
+					"const randomSalary = generateRandomSalary();",
+					"pm.environment.set(\"randomSalary\", randomSalary.toString());",
+					"",
+					"",
+					"const qtrs = [\"Fall\", \"Summer\", \"Winter\", \"Spring\"]",
+					"randomQtr = qtrs[Math.floor(Math.random() * qtrs.length)]",
+					"pm.environment.set(\"randomQtr\", randomQtr)",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
