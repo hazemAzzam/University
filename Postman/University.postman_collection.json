@@ -171,7 +171,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"student\": \"740823553\",\r\n    \"level\": \"5\",\r\n    \"grade\": {\r\n        \"collage\": \"Science\",\r\n        \"degree\": 4.5,\r\n        \"year\": 2023\r\n    },\r\n    \"advisor\": \"713727294\",\r\n    \"committee\": [\"713727294\"]\r\n}",
+							"raw": "{\r\n    \"student\": \"188861520\",\r\n    \"collage\": \"Science\",\r\n    \"degree\": 4.5,\r\n    \"year\": 2023,\r\n    \"advisor\": \"484862866\",\r\n    \"committee\": [\"484862866\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -190,6 +190,89 @@
 							"port": "8000",
 							"path": [
 								"grade_students",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "increase_level",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/grade_students/448793804/increase_level/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grade_students",
+								"448793804",
+								"increase_level",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrease_level",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/grade_students/448793804/decrease_level/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grade_students",
+								"448793804",
+								"decrease_level",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update grad student",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"advisor\": \"571993034\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/grade_students/448793804/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grade_students",
+								"448793804",
 								""
 							]
 						}
@@ -279,6 +362,132 @@
 							"path": [
 								"instructor-researchers",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grant",
+			"item": [
+				{
+					"name": "create grant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Convert theta into Beta\",\r\n    \"agency\": \"Mathematics is shit\",\r\n    \"start_date\": \"{{randomDate}}\",\r\n    \"faculty\": \"867211303\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/grants/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grants",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list grand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/grants/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"grants",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supports",
+			"item": [
+				{
+					"name": "add support to grant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start\": \"{{randomDate}}\",\r\n    \"end\": \"{{randomDate}}\",\r\n    \"time\": \"{{$randomInt}}\",\r\n    \"grand\": 1,\r\n    \"instructor_researcher\": \"188861520\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/supports/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"supports",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list support of some grant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/supports/?grant=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"supports",
+								""
+							],
+							"query": [
+								{
+									"key": "grant",
+									"value": "1"
+								}
 							]
 						}
 					},
