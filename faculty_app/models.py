@@ -2,7 +2,7 @@ from django.db import models
 from person_app.models import Person
 from student_app.models import Student, Grad_Student
 from rest_framework.serializers import ValidationError
-from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -20,7 +20,7 @@ def insert_faculty_as_instructor(sender, instance, **kwargs):
     instructor_ssn = instance.ssn
 
     Instructor_Researcher.objects.get_or_create(
-        instructor_type=instructor_type,
+        instructor_type="Faculty",
         instructor_ssn=instructor_ssn,
     )
     
@@ -30,7 +30,7 @@ def insert_grad_student_as_instructor_researcher(sender, instance, **kwargs):
     instructor_ssn = instance.student.ssn
 
     Instructor_Researcher.objects.get_or_create(
-        instructor_type=instructor_type,
+        instructor_type="Grad Student",
         instructor_ssn=instructor_ssn,
     )
     
@@ -42,6 +42,13 @@ class Instructor_Researcher(models.Model):
     def __str__(self):
         ## TODO: Fix this shit to return the instructor instead of instructor_ssn, the proplem is it returns None in case of Grad Student
         return f"{self.instructor_ssn}"
+    
+class Instructor_Researcher(models.Model):
+    instructor_type = models.CharField(max_length=50)
+    instructor_ssn = models.CharField(max_length=15, primary_key=True)
+    
+    def __str__(self):
+        return self.instructor_ssn
     
 
 class Grant(models.Model):

@@ -3,6 +3,7 @@ from .serializers import *
 from rest_framework.decorators import action
 from rest_framework.serializers import ValidationError
 from rest_framework.response import Response
+from faculty_app.models import Instructor_Researcher
 
 class Student_View(ModelViewSet):
     queryset=Student.objects.all()
@@ -11,6 +12,11 @@ class Student_View(ModelViewSet):
 class Grad_Student_View(ModelViewSet):
     queryset=Grad_Student.objects.all()
     serializer_class=Grad_Student_Serializer
+
+    def retrieve(self, request, *args, **kwargs):
+        student = kwargs['pk']
+        print(student)
+        return super().retrieve(request, *args, **kwargs)
 
     @action(detail=True, methods=['post'])
     def increase_level(self, request, pk=None):
@@ -37,6 +43,11 @@ class Grad_Student_View(ModelViewSet):
             return Response(Grad_Student_Serializer(instance=grad_student).data)
         except:
             raise ValidationError("cannot decrease student level")
+        
+    def destroy(self, request, *args, **kwargs):
+        student_ssn = kwargs['pk']
+        Instructor_Researcher.objects.get(instructor_ssn=student_ssn).delete()
+        return super().destroy(request, *args, **kwargs)
         
         
 
