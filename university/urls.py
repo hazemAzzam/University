@@ -19,8 +19,6 @@ import api_v1
 from .settings import STATIC_ROOT, STATIC_URL
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("api_v1.urls"))
