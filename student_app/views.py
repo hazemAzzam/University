@@ -37,6 +37,7 @@ class Grad_Student_View(ModelViewSet):
             grad_student.student.level -= 1
             if grad_student.student.level <= 4:
                 student = Student_Serializer(instance=grad_student.student).data
+                self.destroy(request, pk)
                 grad_student.delete()
                 return Response(student)
             grad_student.student.save()
@@ -44,8 +45,8 @@ class Grad_Student_View(ModelViewSet):
         except:
             raise ValidationError("cannot decrease student level")
         
-    def destroy(self, request, *args, **kwargs):
-        student_ssn = kwargs['pk']
+    def destroy(self, request, pk, *args, **kwargs):
+        student_ssn = pk
         Instructor_Researcher.objects.get(instructor_ssn=student_ssn).delete()
         return super().destroy(request, *args, **kwargs)
         

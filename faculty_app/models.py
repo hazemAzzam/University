@@ -52,8 +52,8 @@ class Instructor_Researcher(models.Model):
     
 
 class Grant(models.Model):
-    title = models.CharField(max_length=100)
-    agency = models.CharField(max_length=100)
+    title = models.CharField(max_length=150)
+    agency = models.CharField(max_length=150)
     start_date = models.DateField()
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE, related_name="pl")
 
