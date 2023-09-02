@@ -1,11 +1,10 @@
 {
 	"info": {
-		"_postman_id": "15156f4d-1b0c-403a-9fbc-0a90cf379bce",
-		"name": "University",
+		"_postman_id": "c74cb126-d1d4-428c-b3b9-fdab23a0b504",
+		"name": "Django",
 		"description": "StartFragment\n\nThe UNIVERSITY database keeps track of students and their majors, transcripts, and registration, as well as the university's course offerings. It also tracks the sponsored research projects of faculty and graduate students.\n\nthe flow of the enpoints should be as follows\n\n1. create a colleges that will be present in the college\n2. for each college create the departments (each department must have a chairs who oversees that department, but since we didn't create faculities yet, we will leave it null for now, and use update endpoint to set the chairs)\n3. create faculities for each college\n4. create students for each college (the major and the minor are the departments for which the student will be registered at)\n5. create courses for each department\n6. for each course create sections\n7. now student can be able to register courses, the courses at the current year and current qtr will be available to student to be registered, so that every year the new sections that will be taught must be added with the current year and current qtr\n8. the transcript is the complete section of the students, to add course to the transcript, the student first must have registered it.\n9. the student level or information can be updated from student/update end point, but you cannot directly update student to level 5 or 6 since it will be cosidered as grad student and it requires more information, so\n10. grad student end point will allow us to pick the students at level 4 to level up then to level 5, when adding student from lvl 4 to grad student, its level will be automatically changed to level 5, student of level less than 4 will not be allowed to be added to grad students untill that level 4 or 5",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26275557",
-		"_collection_link": "https://www.postman.com/lively-trinity-888959/workspace/medical-convoy/collection/26275557-15156f4d-1b0c-403a-9fbc-0a90cf379bce?action=share&creator=26275557&source=collection_link"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26275557"
 	},
 	"item": [
 		{
@@ -16,21 +15,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/colleges/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"colleges",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/colleges/"
 					},
 					"response": []
 				},
@@ -48,21 +33,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/colleges/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"colleges",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/colleges/"
 					},
 					"response": []
 				}
@@ -76,21 +47,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/departments/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"departments",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/departments/"
 					},
 					"response": []
 				},
@@ -108,21 +65,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/departments/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"departments",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/departments/"
 					},
 					"response": []
 				},
@@ -140,22 +83,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/departments/Books/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"departments",
-								"Books",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/departments/Books/"
 					},
 					"response": []
 				}
@@ -169,21 +97,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/faculities/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"faculities",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/faculities/"
 					},
 					"response": []
 				},
@@ -201,21 +115,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/faculities/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"faculities",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/faculities/"
 					},
 					"response": []
 				},
@@ -224,22 +124,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/faculities/710359178/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"faculities",
-								"710359178",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/faculities/591773192/"
 					},
 					"response": []
 				}
@@ -253,21 +138,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/students/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"students",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/students/"
 					},
 					"response": []
 				},
@@ -289,28 +160,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"level\": \"{{randomNumber}}\",\r\n    \"minor\": \"{{randomDepartment}}\",\r\n    \"major\": \"{{randomDepartment}}\"\r\n}",
+							"raw": "{\r\n    \"ssn\": \"{{randomSSN}}\",\r\n    \"fname\": \"{{$randomFirstName}}\",\r\n    \"minit\": \"{{$randomFirstName}}\",\r\n    \"lname\": \"{{$randomLastName}}\",\r\n    \"address\": {\r\n        \"no\": \"{{$randomInt}}\",\r\n        \"street\": \"{{$randomStreetAddress}}\",\r\n        \"apt_no\": \"{{$randomInt}}\",\r\n        \"city\": \"{{$randomCity}}\",\r\n        \"state\": \"{{randomState}}\",\r\n        \"zip\": \"{{randomZipCode}}\"\r\n    },\r\n    \"birth_date\": \"{{randomDate}}\",\r\n    \"sex\": \"{{randomGender}}\",\r\n    \"level\": 4,\r\n    \"minor\": \"{{randomDepartment}}\",\r\n    \"major\": \"{{randomDepartment}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/students/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"students",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/students/"
 					},
 					"response": []
 				}
@@ -324,21 +181,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/grade_students/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grade_students",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grade_students/"
 					},
 					"response": []
 				},
@@ -349,28 +192,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"student\": \"103707715\",\r\n    \"collage\": \"Science\",\r\n    \"degree\": 3.6,\r\n    \"year\": 2023,\r\n    \"advisor\": \"402390463\",\r\n    \"committee\": [\"402390463\"]\r\n}",
+							"raw": "{\r\n    \"student\": \"178470670\",\r\n    \"collage\": \"Science\",\r\n    \"degree\": 3.6,\r\n    \"year\": 2023,\r\n    \"advisor\": \"253798862\",\r\n    \"committee\": [\"253798862\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/grade_students/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grade_students",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grade_students/"
 					},
 					"response": []
 				},
@@ -379,23 +208,7 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/grade_students/100405839/increase_level/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grade_students",
-								"100405839",
-								"increase_level",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grade_students/370448125/increase_level/"
 					},
 					"response": []
 				},
@@ -404,23 +217,7 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/grade_students/197713381/decrease_level/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grade_students",
-								"197713381",
-								"decrease_level",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grade_students/178470670/decrease_level/"
 					},
 					"response": []
 				},
@@ -438,22 +235,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/grade_students/100405839/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grade_students",
-								"100405839",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grade_students/100405839/"
 					},
 					"response": []
 				}
@@ -467,21 +249,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/courses/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"courses",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/courses/"
 					},
 					"response": []
 				},
@@ -499,21 +267,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/courses/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"courses",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/courses/"
 					},
 					"response": []
 				}
@@ -527,21 +281,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/sections/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"sections",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/sections/"
 					},
 					"response": []
 				},
@@ -559,21 +299,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/sections/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"sections",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/sections/"
 					},
 					"response": []
 				}
@@ -587,21 +313,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/instructor-researchers/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"instructor-researchers",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/instructor-researchers/"
 					},
 					"response": []
 				}
@@ -624,21 +336,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/grants/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grants",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grants/"
 					},
 					"response": []
 				},
@@ -647,21 +345,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/grants/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"grants",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/grants/"
 					},
 					"response": []
 				}
@@ -677,28 +361,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"start\": \"{{randomDate}}\",\r\n    \"end\": \"{{randomDate}}\",\r\n    \"time\": \"{{$randomInt}}\",\r\n    \"grand\": 1,\r\n    \"instructor_researcher\": \"188861520\"\r\n}",
+							"raw": "{\r\n    \"start\": \"{{randomDate}}\",\r\n    \"end\": \"{{randomDate}}\",\r\n    \"time\": \"{{$randomInt}}\",\r\n    \"grant\": 1,\r\n    \"instructor_researcher\": \"545834328\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/supports/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"supports",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/supports/"
 					},
 					"response": []
 				},
@@ -708,7 +378,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/supports/?grant=1",
+							"raw": "{{BASE_URL}}/supports/?grant=1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -745,21 +415,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/course-registerations/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"course-registerations",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/course-registerations/"
 					},
 					"response": []
 				},
@@ -770,28 +426,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"section\": null,\r\n    \"student\": null\r\n}",
+							"raw": "{\r\n    \"section\": \"106\",\r\n    \"student\": \"393157905\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/course-registerations/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"course-registerations",
-								""
-							]
-						}
+						"url": "{{BASE_URL}}/course-registerations/"
 					},
 					"response": []
 				}
@@ -878,7 +520,7 @@
 					"function getRandomCollege() {",
 					"  return new Promise((resolve, reject) => {",
 					"    pm.sendRequest({",
-					"      url: 'http://127.0.0.1:8000/colleges/',",
+					"      url: '{{BASE_URL}}/colleges/',",
 					"      method: 'GET'",
 					"    }, (err, response) => {",
 					"      if (err) {",
@@ -906,7 +548,7 @@
 					"function getRandomDepartments() {",
 					"  return new Promise((resolve, reject) => {",
 					"    pm.sendRequest({",
-					"      url: 'http://127.0.0.1:8000/departments/',",
+					"      url: '{{BASE_URL}}/departments/',",
 					"      method: 'GET'",
 					"    }, (err, response) => {",
 					"      if (err) {",
@@ -941,7 +583,7 @@
 					"function randomDepartment() {",
 					"  return new Promise((resolve, reject) => {",
 					"    pm.sendRequest({",
-					"      url: 'http://127.0.0.1:8000/departments/',",
+					"      url: '{{BASE_URL}}/departments/',",
 					"      method: 'GET'",
 					"    }, function (err, response) {",
 					"      if (err) {",
@@ -971,7 +613,7 @@
 					"",
 					"function randomCourse(){",
 					"    pm.sendRequest({",
-					"      url: 'http://127.0.0.1:8000/courses/',",
+					"      url: '{{BASE_URL}}/courses/',",
 					"      method: 'GET'",
 					"    }, function (err, response) {",
 					"      if (err) {",
@@ -993,7 +635,7 @@
 					"function randomCourse() {",
 					"  return new Promise((resolve, reject) => {",
 					"    pm.sendRequest({",
-					"      url: 'http://127.0.0.1:8000/courses/',",
+					"      url: '{{BASE_URL}}/courses/',",
 					"      method: 'GET'",
 					"    }, function (err, response) {",
 					"      if (err) {",
@@ -1024,7 +666,7 @@
 					"function randomInstructor() {",
 					"  return new Promise((resolve, reject) => {",
 					"    pm.sendRequest({",
-					"      url: 'http://127.0.0.1:8000/instructor-researchers/',",
+					"      url: '{{BASE_URL}}/instructor-researchers/',",
 					"      method: 'GET'",
 					"    }, function (err, response) {",
 					"      if (err) {",
