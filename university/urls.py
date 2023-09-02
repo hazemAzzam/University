@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import api_v1
+from .settings import STATIC_ROOT, STATIC_URL
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
