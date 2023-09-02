@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, CharField
 from .models import *
-from rest_framework.customs import ComplexSerializer
+from university.customs import ComplexSerializer
 
 class Address_Serializer(ComplexSerializer):
     class Meta:

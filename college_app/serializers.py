@@ -1,4 +1,4 @@
-from rest_framework.customs import ComplexSerializer, StringRelatedField
+from university.customs import ComplexSerializer, StringRelatedField
 from .models import *
 
 class Department_Serializer(ComplexSerializer):

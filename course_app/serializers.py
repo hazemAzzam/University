@@ -1,4 +1,4 @@
-from rest_framework.customs import ComplexSerializer, PrimaryKeyRelatedField, SerializerMethodField, ModelSerializer
+from university.customs import ComplexSerializer, PrimaryKeyRelatedField, SerializerMethodField, ModelSerializer
 from .models import *
 
 

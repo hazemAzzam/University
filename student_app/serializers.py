@@ -1,4 +1,4 @@
-from rest_framework.customs import ComplexSerializer, PrimaryKeyRelatedField, CharField, IntegerField, StringRelatedField, FloatField
+from university.customs import ComplexSerializer, PrimaryKeyRelatedField, CharField, IntegerField, StringRelatedField, FloatField
 from .models import *
 from person_app.serializers import Person_Serializer
 from datetime import datetime

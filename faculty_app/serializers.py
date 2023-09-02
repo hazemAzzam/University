@@ -1,4 +1,4 @@
-from rest_framework.customs import ComplexSerializer, CharField, SerializerMethodField, SlugRelatedField, StringRelatedField, ModelSerializer
+from university.customs import ComplexSerializer, CharField, SerializerMethodField, SlugRelatedField, StringRelatedField, ModelSerializer
 from .models import *
 from person_app.serializers import Person_Serializer
 from student_app.serializers import Student_Serializer
